@@ -18,15 +18,15 @@ function randomID(len) {
 }
 
 const App = () => {
-  const [userInfo, setUserInfo] = useState({ username: "", userID: "" });
+  const [userInfo, setUserInfo] = useState({ userName: "", userID: "" });
   const [calleeID, setCalleeID] = useState("");
 
   useEffect(() => {
     const userID = randomID();
-    const username = "user__" + userID;
-    setUserInfo({ username: username, userID: userID });
+    const userName = "user__" + userID;
+    setUserInfo({ userName: userName, userID: userID });
 
-    const appID = import.meta.env.VITE_appID;
+    const appID = parseInt(import.meta.env.VITE_appID);
     const serverSecret = import.meta.env.VITE_serverSecret;
 
     const TOKEN = ZegoUIKitPrebuilt.generateKitTokenForTest(
@@ -43,7 +43,7 @@ const App = () => {
       <Header />
       <main className="flex-grow p-5">
         <div className="title">
-          <h2>Username: {userInfo.username}</h2>
+          <h2>Username: {userInfo.userName}</h2>
           <h2>User ID: {userInfo.userID}</h2>
         </div>
         <div className="inputs py-2">
